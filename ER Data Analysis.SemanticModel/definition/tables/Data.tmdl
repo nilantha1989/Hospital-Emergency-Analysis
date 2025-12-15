@@ -9,14 +9,6 @@ table Data
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Patient Admission Date'
-		dataType: string
-		lineageTag: a9fb5fbd-69f8-4821-b1e2-da354a35052e
-		summarizeBy: none
-		sourceColumn: Patient Admission Date
-
-		annotation SummarizationSetBy = Automatic
-
 	column 'Patient First Inital'
 		dataType: string
 		lineageTag: a38e9116-55b0-4f1d-a76a-31001a468e20
@@ -102,15 +94,89 @@ table Data
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Patient Full Name'
+		dataType: string
+		lineageTag: 42c5444d-5255-41dc-8232-7c0ef6428e8b
+		summarizeBy: none
+		sourceColumn: Patient Full Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Admission Date.1.1'
+		dataType: string
+		lineageTag: 18a435bf-ac26-4fbd-9916-f47c7d3b7d18
+		summarizeBy: none
+		sourceColumn: Patient Admission Date.1.1
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Admission Date.1.2'
+		dataType: string
+		lineageTag: 7ea50d9a-b96b-498c-8cce-59ebd8613703
+		summarizeBy: none
+		sourceColumn: Patient Admission Date.1.2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Admission Date.1.3'
+		dataType: string
+		lineageTag: d66e3c56-2b3e-457c-81ce-f75548c8ab03
+		summarizeBy: none
+		sourceColumn: Patient Admission Date.1.3
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Admission Date.2'
+		dataType: dateTime
+		formatString: Long Time
+		lineageTag: 77549b1c-b5ee-4dec-b38b-458022a8804b
+		summarizeBy: none
+		sourceColumn: Patient Admission Date.2
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Time
+
+	column 'Admission Date'
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: a4aa8fc4-92bc-4c90-b39e-166434c9214e
+		summarizeBy: none
+		sourceColumn: Admission Date
+
+		variation Variation
+			isDefault
+			relationship: 2606fd4a-2b43-44ba-85f4-99c48f6a9d7f
+			defaultHierarchy: LocalDateTable_0436c81e-1911-4a5a-911d-6e364121cca8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
 	partition Data = m
 		mode: import
 		source =
 				let
 				    Source = Csv.Document(File.Contents("D:\Power BI\Projects\HealthDomain\resources\Data.csv"),[Delimiter=",", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Patient Id", type text}, {"Patient Admission Date", type text}, {"Patient First Inital", type text}, {"Patient Last Name", type text}, {"Patient Gender", type text}, {"Patient Age", Int64.Type}, {"Patient Race", type text}, {"Department Referral", type text}, {"Patient Admission Flag", type logical}, {"Patient Satisfaction Score", Int64.Type}, {"Patient Waittime", Int64.Type}, {"Patients CM", Int64.Type}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Patient Id", type text}, {"Patient Admission Date", type text}, {"Patient First Inital", type text}, {"Patient Last Name", type text}, {"Patient Gender", type text}, {"Patient Age", Int64.Type}, {"Patient Race", type text}, {"Department Referral", type text}, {"Patient Admission Flag", type logical}, {"Patient Satisfaction Score", Int64.Type}, {"Patient Waittime", Int64.Type}, {"Patients CM", Int64.Type}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Patient Full Name", each [Patient First Inital] & " " & [Patient Last Name]),
+				    #"Replaced Value" = Table.ReplaceValue(#"Added Custom","M","Male",Replacer.ReplaceText,{"Patient Gender"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","F","Female",Replacer.ReplaceText,{"Patient Gender"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","NC","Not Confirmed",Replacer.ReplaceText,{"Patient Gender"}),
+				    #"Split Column by Delimiter" = Table.SplitColumn(#"Replaced Value2", "Patient Admission Date", Splitter.SplitTextByDelimiter(" ", QuoteStyle.Csv), {"Patient Admission Date.1", "Patient Admission Date.2"}),
+				    #"Split Column by Delimiter1" = Table.SplitColumn(#"Split Column by Delimiter", "Patient Admission Date.1", Splitter.SplitTextByDelimiter("-", QuoteStyle.Csv), {"Patient Admission Date.1.1", "Patient Admission Date.1.2", "Patient Admission Date.1.3"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Split Column by Delimiter1",{{"Patient Admission Date.1.1", Int64.Type}, {"Patient Admission Date.1.2", Int64.Type}, {"Patient Admission Date.1.3", Int64.Type}, {"Patient Admission Date.2", type time}}),
+				    #"Added Custom1" = Table.AddColumn(#"Changed Type1", "Admission Date", each [Patient Admission Date.1.3]& "-"&[Patient Admission Date.1.2]&""&[Patient Admission Date.1.1]),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom1",{{"Patient Admission Date.1.1", type text}, {"Patient Admission Date.1.2", type text}, {"Patient Admission Date.1.3", type text}}),
+				    #"Added Custom2" = Table.AddColumn(#"Changed Type2", "Admission Date.1", each [Patient Admission Date.1.3]&"-"&[Patient Admission Date.1.2]&"-"&[Patient Admission Date.1.1]),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Custom2",{"Admission Date"}),
+				    #"Changed Type3" = Table.TransformColumnTypes(#"Removed Columns",{{"Admission Date.1", type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type3",{{"Admission Date.1", "Admission Date"}})
 				in
-				    #"Changed Type"
+				    #"Renamed Columns"
 
 	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
 

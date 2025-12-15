@@ -1,0 +1,36 @@
+table 'Date Table'
+	lineageTag: 59d3ea83-cdca-4588-a700-621d412f85c7
+
+	column Date
+		formatString: General Date
+		lineageTag: 68fc78a5-30b0-4251-9ad6-1b668fe4e8f5
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variation
+			isDefault
+			relationship: 33954281-0019-46aa-804e-42f6a1bf69b6
+			defaultHierarchy: LocalDateTable_624a0209-ebf2-4837-93fe-7a96df67b231.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT('Date Table'[Date],"mmm")
+		lineageTag: 09bc4ec2-b039-4cdf-b062-d578d3f03839
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year = YEAR('Date Table'[Date])
+		formatString: 0
+		lineageTag: 178dbec4-6496-4c2e-9fd0-e9af2acaf84b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Date Table' = calculated
+		mode: import
+		source = CALENDAR(MIN('Data'[Admission Date]),MAX('Data'[Admission Date]))
+
+	annotation PBI_Id = a298355779a540528a83f26a751e1c89
+

@@ -15,6 +15,10 @@ annotation PBIDesktopVersion = 2.139.1678.0 (24.12)+2a034ab280bddf891eb7bb9ebfe6
 annotation PBI_ProTooling = ["DevMode"]
 
 ref table Data
+ref table 'Date Table'
+ref table DateTableTemplate_4a1bcb5d-6c46-4291-8039-41b26cfea75a
+ref table LocalDateTable_0436c81e-1911-4a5a-911d-6e364121cca8
+ref table LocalDateTable_624a0209-ebf2-4837-93fe-7a96df67b231
 
 ref cultureInfo en-US
 
