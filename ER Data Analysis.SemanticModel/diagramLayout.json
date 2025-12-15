@@ -19,19 +19,20 @@
             "height": 300,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 2
         },
         {
           "location": {
-            "x": 284,
-            "y": 50
+            "x": 558,
+            "y": 34
           },
           "nodeIndex": "Date Table",
+          "nodeLineageTag": "59d3ea83-cdca-4588-a700-621d412f85c7",
           "size": {
             "height": 200,
             "width": 234
           },
-          "zIndex": 0
+          "zIndex": 1
         }
       ],
       "name": "All tables",

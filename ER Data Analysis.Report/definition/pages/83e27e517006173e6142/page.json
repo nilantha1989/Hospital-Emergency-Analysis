@@ -3,6 +3,45 @@
   "name": "83e27e517006173e6142",
   "displayName": "Page 1",
   "displayOption": "FitToPage",
-  "height": 720,
-  "width": 1280
+  "height": 1400,
+  "width": 2315,
+  "objects": {
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Middle'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "background": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": {
+                "expr": {
+                  "Literal": {
+                    "Value": "'#A0D1FF'"
+                  }
+                }
+              }
+            }
+          },
+          "transparency": {
+            "expr": {
+              "Literal": {
+                "Value": "90D"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
 }

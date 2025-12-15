@@ -1,6 +1,22 @@
 table Data
 	lineageTag: 8e222679-99e3-40fa-8e9d-596553e8639d
 
+	measure 'No of Patient' = DISTINCTCOUNT(Data[Patient Id])
+		formatString: 0
+		lineageTag: edd41b12-981b-4459-8d21-f5f03dd3f585
+
+	measure 'Avg Wait time' = FORMAT( AVERAGE(Data[Patient Waittime]),"0.0")&"Min"
+		lineageTag: 3e8dd103-5215-4c60-9a34-09abe837932a
+
+	measure Rating = AVERAGE(Data[Patient Satisfaction Score])
+		lineageTag: f0d9eaf4-0d27-4a9f-a798-28e920b1ec68
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'No of Referrals' = CALCULATE(COUNTROWS(Data),Data[Department Referral]<>"None")
+		formatString: 0
+		lineageTag: 7cfe1ece-1fb2-48ac-a758-79ea33d58b93
+
 	column 'Patient Id'
 		dataType: string
 		lineageTag: f4150320-ed3f-4fa8-95ce-2024d96ac487
@@ -102,36 +118,12 @@ table Data
 
 		annotation SummarizationSetBy = Automatic
 
-	column 'Patient Admission Date.1.1'
-		dataType: string
-		lineageTag: 18a435bf-ac26-4fbd-9916-f47c7d3b7d18
-		summarizeBy: none
-		sourceColumn: Patient Admission Date.1.1
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Patient Admission Date.1.2'
-		dataType: string
-		lineageTag: 7ea50d9a-b96b-498c-8cce-59ebd8613703
-		summarizeBy: none
-		sourceColumn: Patient Admission Date.1.2
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Patient Admission Date.1.3'
-		dataType: string
-		lineageTag: d66e3c56-2b3e-457c-81ce-f75548c8ab03
-		summarizeBy: none
-		sourceColumn: Patient Admission Date.1.3
-
-		annotation SummarizationSetBy = Automatic
-
-	column 'Patient Admission Date.2'
+	column 'Patient Admission Time'
 		dataType: dateTime
 		formatString: Long Time
 		lineageTag: 77549b1c-b5ee-4dec-b38b-458022a8804b
 		summarizeBy: none
-		sourceColumn: Patient Admission Date.2
+		sourceColumn: Patient Admission Time
 
 		annotation SummarizationSetBy = Automatic
 
@@ -143,11 +135,6 @@ table Data
 		lineageTag: a4aa8fc4-92bc-4c90-b39e-166434c9214e
 		summarizeBy: none
 		sourceColumn: Admission Date
-
-		variation Variation
-			isDefault
-			relationship: 2606fd4a-2b43-44ba-85f4-99c48f6a9d7f
-			defaultHierarchy: LocalDateTable_0436c81e-1911-4a5a-911d-6e364121cca8.'Date Hierarchy'
 
 		annotation SummarizationSetBy = Automatic
 
@@ -172,9 +159,11 @@ table Data
 				    #"Added Custom2" = Table.AddColumn(#"Changed Type2", "Admission Date.1", each [Patient Admission Date.1.3]&"-"&[Patient Admission Date.1.2]&"-"&[Patient Admission Date.1.1]),
 				    #"Removed Columns" = Table.RemoveColumns(#"Added Custom2",{"Admission Date"}),
 				    #"Changed Type3" = Table.TransformColumnTypes(#"Removed Columns",{{"Admission Date.1", type date}}),
-				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type3",{{"Admission Date.1", "Admission Date"}})
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type3",{{"Admission Date.1", "Admission Date"}}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Renamed Columns",{"Patient Admission Date.1.1", "Patient Admission Date.1.2", "Patient Admission Date.1.3"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Removed Columns1",{{"Patient Admission Date.2", "Patient Admission Time"}})
 				in
-				    #"Renamed Columns"
+				    #"Renamed Columns1"
 
 	annotation PBI_ResultType = Table
 

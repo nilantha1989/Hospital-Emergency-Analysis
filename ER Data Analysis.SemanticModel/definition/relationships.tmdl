@@ -1,10 +1,9 @@
-relationship 2606fd4a-2b43-44ba-85f4-99c48f6a9d7f
-	joinOnDateBehavior: datePartOnly
-	fromColumn: Data.'Admission Date'
-	toColumn: LocalDateTable_0436c81e-1911-4a5a-911d-6e364121cca8.Date
-
 relationship 33954281-0019-46aa-804e-42f6a1bf69b6
 	joinOnDateBehavior: datePartOnly
 	fromColumn: 'Date Table'.Date
 	toColumn: LocalDateTable_624a0209-ebf2-4837-93fe-7a96df67b231.Date
+
+relationship 819576db-8acb-541a-f995-99289430170c
+	fromColumn: Data.'Admission Date'
+	toColumn: 'Date Table'.Date
 
