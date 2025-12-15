@@ -1,0 +1,116 @@
+table Data
+	lineageTag: 8e222679-99e3-40fa-8e9d-596553e8639d
+
+	column 'Patient Id'
+		dataType: string
+		lineageTag: f4150320-ed3f-4fa8-95ce-2024d96ac487
+		summarizeBy: none
+		sourceColumn: Patient Id
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Admission Date'
+		dataType: string
+		lineageTag: a9fb5fbd-69f8-4821-b1e2-da354a35052e
+		summarizeBy: none
+		sourceColumn: Patient Admission Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient First Inital'
+		dataType: string
+		lineageTag: a38e9116-55b0-4f1d-a76a-31001a468e20
+		summarizeBy: none
+		sourceColumn: Patient First Inital
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Last Name'
+		dataType: string
+		lineageTag: afcb6c1b-f39b-439f-acd5-3f10fe304622
+		summarizeBy: none
+		sourceColumn: Patient Last Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Gender'
+		dataType: string
+		lineageTag: 3619a330-0fe4-415e-9af6-1afedaabc9f9
+		summarizeBy: none
+		sourceColumn: Patient Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Age'
+		dataType: int64
+		formatString: 0
+		lineageTag: be6cbc82-841b-4188-ab4b-6ff31944712f
+		summarizeBy: sum
+		sourceColumn: Patient Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Race'
+		dataType: string
+		lineageTag: 6d4d8881-c78f-4961-b924-14e7d7c7daec
+		summarizeBy: none
+		sourceColumn: Patient Race
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Department Referral'
+		dataType: string
+		lineageTag: 7250196e-65b5-4c3e-ab2b-b722570c8205
+		summarizeBy: none
+		sourceColumn: Department Referral
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Admission Flag'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1f55ecb2-cbea-4fc1-aaea-2e2f3ddbb420
+		summarizeBy: none
+		sourceColumn: Patient Admission Flag
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Satisfaction Score'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6894a3d2-f56b-43f9-b135-c385d4af14ec
+		summarizeBy: sum
+		sourceColumn: Patient Satisfaction Score
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patient Waittime'
+		dataType: int64
+		formatString: 0
+		lineageTag: a75ff91e-edc0-44a0-a73c-69e54d8fc27d
+		summarizeBy: sum
+		sourceColumn: Patient Waittime
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Patients CM'
+		dataType: int64
+		formatString: 0
+		lineageTag: 947a9f1f-ad20-447c-80f5-6d81a542b50d
+		summarizeBy: sum
+		sourceColumn: Patients CM
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Data = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Power BI\Projects\HealthDomain\resources\Data.csv"),[Delimiter=",", Columns=12, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Patient Id", type text}, {"Patient Admission Date", type text}, {"Patient First Inital", type text}, {"Patient Last Name", type text}, {"Patient Gender", type text}, {"Patient Age", Int64.Type}, {"Patient Race", type text}, {"Department Referral", type text}, {"Patient Admission Flag", type logical}, {"Patient Satisfaction Score", Int64.Type}, {"Patient Waittime", Int64.Type}, {"Patients CM", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

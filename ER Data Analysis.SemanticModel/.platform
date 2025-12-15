@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "ER Data Analysis"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f62c1f9d-9f34-4bf0-aa1f-fb30c279dd64"
+  }
+}
