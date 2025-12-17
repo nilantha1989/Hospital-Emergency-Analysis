@@ -105,6 +105,12 @@ cultureInfo en-US
 			          }
 			        },
 			        {
+			          "patient": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
 			          "patient identification": {
 			            "Type": "Noun",
 			            "State": "Suggested",
@@ -142,6 +148,66 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "enduring": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "persevering": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "longsuffering": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "long-suffering": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "forbearing": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
+			          }
+			        },
+			        {
+			          "good-natured": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.452
 			          }
 			        }
 			      ]
@@ -2520,6 +2586,217 @@ cultureInfo en-US
 			    }
 			  },
 			  "Relationships": {
+			    "date_table_date_date_hierarchy_has_date_table_date_quarter": {
+			      "Binding": {
+			        "ConceptualEntity": "Date Table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_table.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "date_table.date.date_hierarchy"
+			          }
+			        },
+			        "date_table.date.quarter": {
+			          "Target": {
+			            "Entity": "date_table.date.quarter"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_table.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "date_table.date.quarter"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_quarters"
+			        }
+			      ]
+			    },
+			    "date_table_date_date_hierarchy_has_date_table_date_year": {
+			      "Binding": {
+			        "ConceptualEntity": "Date Table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_table.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "date_table.date.date_hierarchy"
+			          }
+			        },
+			        "date_table.date.year": {
+			          "Target": {
+			            "Entity": "date_table.date.year"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_table.date.date_hierarchy"
+			            },
+			            "Object": {
+			              "Role": "date_table.date.year"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_hierarchies_have_years"
+			        }
+			      ]
+			    },
+			    "date_table_date_has_date_hierarchy": {
+			      "Binding": {
+			        "ConceptualEntity": "Date Table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_table.date": {
+			          "Target": {
+			            "Entity": "date_table.date"
+			          }
+			        },
+			        "date_table.date.date_hierarchy": {
+			          "Target": {
+			            "Entity": "date_table.date.date_hierarchy"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_table.date"
+			            },
+			            "Object": {
+			              "Role": "date_table.date.date_hierarchy"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "dates_have_date_hierarchies"
+			        }
+			      ]
+			    },
+			    "data_has_date_table": {
+			      "Binding": {
+			        "ConceptualEntity": "Data"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "data": {
+			          "Target": {
+			            "Entity": "data"
+			          }
+			        },
+			        "date_table": {
+			          "Target": {
+			            "Entity": "date_table"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "data"
+			            },
+			            "Object": {
+			              "Role": "date_table"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "data_have_date_tables"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_table"
+			            },
+			            "Object": {
+			              "Role": "data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_tables_have_data"
+			        }
+			      ]
+			    },
+			    "date_table_has_week_day": {
+			      "Binding": {
+			        "ConceptualEntity": "Date Table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_table": {
+			          "Target": {
+			            "Entity": "date_table"
+			          }
+			        },
+			        "date_table.week_day": {
+			          "Target": {
+			            "Entity": "date_table.week_day"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_table"
+			            },
+			            "Object": {
+			              "Role": "date_table.week_day"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_tables_have_week_days"
+			        }
+			      ]
+			    },
+			    "date_table_has_day_name": {
+			      "Binding": {
+			        "ConceptualEntity": "Date Table"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "date_table": {
+			          "Target": {
+			            "Entity": "date_table"
+			          }
+			        },
+			        "date_table.day_name": {
+			          "Target": {
+			            "Entity": "date_table.day_name"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "date_table"
+			            },
+			            "Object": {
+			              "Role": "date_table.day_name"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "date_tables_have_day_names"
+			        }
+			      ]
+			    },
 			    "data_has_waittime_interval": {
 			      "Binding": {
 			        "ConceptualEntity": "Data"
@@ -3415,217 +3692,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "data_have_patient_ids"
-			        }
-			      ]
-			    },
-			    "date_table_has_day_name": {
-			      "Binding": {
-			        "ConceptualEntity": "Date Table"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_table": {
-			          "Target": {
-			            "Entity": "date_table"
-			          }
-			        },
-			        "date_table.day_name": {
-			          "Target": {
-			            "Entity": "date_table.day_name"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_table"
-			            },
-			            "Object": {
-			              "Role": "date_table.day_name"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_tables_have_day_names"
-			        }
-			      ]
-			    },
-			    "date_table_has_week_day": {
-			      "Binding": {
-			        "ConceptualEntity": "Date Table"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_table": {
-			          "Target": {
-			            "Entity": "date_table"
-			          }
-			        },
-			        "date_table.week_day": {
-			          "Target": {
-			            "Entity": "date_table.week_day"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_table"
-			            },
-			            "Object": {
-			              "Role": "date_table.week_day"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_tables_have_week_days"
-			        }
-			      ]
-			    },
-			    "data_has_date_table": {
-			      "Binding": {
-			        "ConceptualEntity": "Data"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "data": {
-			          "Target": {
-			            "Entity": "data"
-			          }
-			        },
-			        "date_table": {
-			          "Target": {
-			            "Entity": "date_table"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "data"
-			            },
-			            "Object": {
-			              "Role": "date_table"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "data_have_date_tables"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_table"
-			            },
-			            "Object": {
-			              "Role": "data"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_tables_have_data"
-			        }
-			      ]
-			    },
-			    "date_table_date_has_date_hierarchy": {
-			      "Binding": {
-			        "ConceptualEntity": "Date Table"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_table.date": {
-			          "Target": {
-			            "Entity": "date_table.date"
-			          }
-			        },
-			        "date_table.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "date_table.date.date_hierarchy"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_table.date"
-			            },
-			            "Object": {
-			              "Role": "date_table.date.date_hierarchy"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "dates_have_date_hierarchies"
-			        }
-			      ]
-			    },
-			    "date_table_date_date_hierarchy_has_date_table_date_year": {
-			      "Binding": {
-			        "ConceptualEntity": "Date Table"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_table.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "date_table.date.date_hierarchy"
-			          }
-			        },
-			        "date_table.date.year": {
-			          "Target": {
-			            "Entity": "date_table.date.year"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_table.date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "date_table.date.year"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_hierarchies_have_years"
-			        }
-			      ]
-			    },
-			    "date_table_date_date_hierarchy_has_date_table_date_quarter": {
-			      "Binding": {
-			        "ConceptualEntity": "Date Table"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "date_table.date.date_hierarchy": {
-			          "Target": {
-			            "Entity": "date_table.date.date_hierarchy"
-			          }
-			        },
-			        "date_table.date.quarter": {
-			          "Target": {
-			            "Entity": "date_table.date.quarter"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "date_table.date.date_hierarchy"
-			            },
-			            "Object": {
-			              "Role": "date_table.date.quarter"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "date_hierarchies_have_quarters"
 			        }
 			      ]
 			    },
