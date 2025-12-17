@@ -140,6 +140,71 @@ table Data
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	column 'Admission Status' = IF(Data[Patient Admission Flag]=TRUE,"Admitted","Not Admitted")
+		lineageTag: accb961d-cf0f-4f41-a9ea-58324f4f32ab
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Group' =
+			
+			SWITCH(
+			    TRUE(),
+			    Data[Patient Age]>=100,"100+",
+			    Data[Patient Age]>=90,"90-99",
+			    Data[Patient Age]>=80,"80-89",
+			    Data[Patient Age]>=70,"70-79",
+			    Data[Patient Age]>=60,"60-69",
+			    Data[Patient Age]>=50,"50-59",
+			    Data[Patient Age]>=40,"40-49",
+			    Data[Patient Age]>=30,"30-39",
+			    Data[Patient Age]>=20,"20-29",
+			    Data[Patient Age]>=10,"10-19",
+			   "0-9"
+			)
+		lineageTag: 8cbe940f-739f-4ee6-99c8-46ef526076d5
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Waittime Status' = IF(Data[Patient Waittime]<=30,"Within Target","Target Missed")
+		lineageTag: d14f396d-3578-43b4-97b7-f844c587de92
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Admission Hour' = HOUR(Data[Patient Admission Time])
+		formatString: 0
+		lineageTag: a0f694a7-c7f1-434c-b68e-f98d4a5a6353
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Waittime Interval' = ```
+			
+			SWITCH(
+			    TRUE(),
+			    Data[Admission Hour]<2,"0-2",
+			     Data[Admission Hour]<4,"3-4",
+			      Data[Admission Hour]<6,"5-6",
+			       Data[Admission Hour]<8,"7-8",
+			        Data[Admission Hour]<10,"9-10",
+			         Data[Admission Hour]<12,"11-12",
+			          Data[Admission Hour]<14,"13-14",
+			           Data[Admission Hour]<16,"15-16",
+			            Data[Admission Hour]<18,"17-18",
+			             Data[Admission Hour]<20,"19-20",
+			              Data[Admission Hour]<22,"21-22",
+			               Data[Admission Hour]<24,"23-24",
+			               "Above 24"
+			                
+			)
+			```
+		lineageTag: b2aef755-1227-4b58-b980-20d60bb529c8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Data = m
 		mode: import
 		source =

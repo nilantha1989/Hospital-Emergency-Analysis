@@ -47,6 +47,37 @@
           "type": "BaseTheme"
         }
       ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "group818268709031368.png",
+          "path": "group818268709031368.png",
+          "type": "Image"
+        },
+        {
+          "name": "clock9756441710616158.png",
+          "path": "clock9756441710616158.png",
+          "type": "Image"
+        },
+        {
+          "name": "rating6774087906252239.png",
+          "path": "rating6774087906252239.png",
+          "type": "Image"
+        },
+        {
+          "name": "social-network5662143780022022.png",
+          "path": "social-network5662143780022022.png",
+          "type": "Image"
+        },
+        {
+          "name": "medical-team4577545771061071.png",
+          "path": "medical-team4577545771061071.png",
+          "type": "Image"
+        }
+      ]
     }
   ],
   "settings": {

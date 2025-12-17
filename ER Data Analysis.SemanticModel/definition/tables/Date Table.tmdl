@@ -28,6 +28,20 @@ table 'Date Table'
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Day Name' = FORMAT('Date Table'[Date],"DDD")
+		lineageTag: 735dc063-43af-45fa-9d01-302edb987a0e
+		summarizeBy: none
+		sortByColumn: 'Week Day'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Day' = WEEKDAY('Date Table'[Date],2)
+		formatString: 0
+		lineageTag: 7ec0b77a-2828-45d3-8755-162545e25125
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
 	partition 'Date Table' = calculated
 		mode: import
 		source = CALENDAR(MIN('Data'[Admission Date]),MAX('Data'[Admission Date]))
