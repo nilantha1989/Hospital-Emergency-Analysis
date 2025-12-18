@@ -138,10 +138,12 @@ Open the Power BI file
 Use date filters to analyze specific time periods
 
 Navigate between dashboards using the navigation pane
-<a href="https://app.powerbi.com/view?r=eyJrIjoiYzViNzAxNWEtZTc5Yi00ZTk3LThkZDctM2EwYjY2N2UyNTM2IiwidCI6IjE2NzAxMjgxLTZmNTQtNDE4OC1iNTY0LTIyMDNkYjBkMzM5YiJ9">View report online</a>
+
 
 Hover over visualizations for detailed tooltips
 
 Use drill-through features for deeper analysis
 
 Export insights for reporting purposes
+
+<a href="https://app.powerbi.com/view?r=eyJrIjoiYzViNzAxNWEtZTc5Yi00ZTk3LThkZDctM2EwYjY2N2UyNTM2IiwidCI6IjE2NzAxMjgxLTZmNTQtNDE4OC1iNTY0LTIyMDNkYjBkMzM5YiJ9">View report online</a>
