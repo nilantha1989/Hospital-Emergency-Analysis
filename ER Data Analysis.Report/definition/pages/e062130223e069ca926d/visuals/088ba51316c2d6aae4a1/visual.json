@@ -3,10 +3,11 @@
   "name": "088ba51316c2d6aae4a1",
   "position": {
     "x": 24,
-    "y": 408,
-    "z": 34003,
+    "y": 336,
+    "z": 10000,
     "height": 336,
-    "width": 288
+    "width": 277,
+    "tabOrder": 11000
   },
   "visual": {
     "visualType": "pageNavigator",
@@ -18,6 +19,13 @@
               "expr": {
                 "Literal": {
                   "Value": "1D"
+                }
+              }
+            },
+            "cellPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "16L"
                 }
               }
             }
