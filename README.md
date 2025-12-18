@@ -146,4 +146,4 @@ Use drill-through features for deeper analysis
 
 Export insights for reporting purposes
 
-<a href="https://app.powerbi.com/view?r=eyJrIjoiYzViNzAxNWEtZTc5Yi00ZTk3LThkZDctM2EwYjY2N2UyNTM2IiwidCI6IjE2NzAxMjgxLTZmNTQtNDE4OC1iNTY0LTIyMDNkYjBkMzM5YiJ9">View report online</a>
+<a href="https://app.powerbi.com/view?r=eyJrIjoiYzViNzAxNWEtZTc5Yi00ZTk3LThkZDctM2EwYjY2N2UyNTM2IiwidCI6IjE2NzAxMjgxLTZmNTQtNDE4OC1iNTY0LTIyMDNkYjBkMzM5YiJ9&pageName=e2ddfa82281caa3b3346">View report online</a>
